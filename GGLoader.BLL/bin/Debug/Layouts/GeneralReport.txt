@@ -46,7 +46,42 @@ var chart = new CanvasJS.Chart("chartContainer", {
 });
 chart.render();
 
+var chartLines = new CanvasJS.Chart("chartContainerLines", {
+	title: {
+		text: "Response Time By Client"
+	},
+	axisY2: {
+		title: "miliseconds",
+	},
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor: "pointer",
+		verticalAlign: "top",
+		horizontalAlign: "center",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data: [
+	%LineMessagesCalls%
+	]
+});
+ 
+ chartLines.render();
+
+	function toogleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else{
+		e.dataSeries.visible = true;
+	}
+	}
 }
+
+
+
+
 </script>
 <body>
 
@@ -75,6 +110,11 @@ chart.render();
 
 <br/>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<br/>
+
+<br/>
+<div id="chartContainerLines" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <br/>
 

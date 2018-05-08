@@ -53,18 +53,29 @@ namespace GGLoader
             reportInformation.Add("%ProcessTable%", tableProcesses.ToString());
 
             var processChart = new List<string>();
+            
+            var multilineChart = new List<string>();
             diagnostic.Processes.ForEach(p =>
             {
                 var logLines = log.Lines.Where(l => l.ProcessId.Equals(p.Id)).ToList();
                 var processResponse = new ProcessResponse(logLines, p.Id);
-                
-                 processChart.Add(GeneratechartData(processResponse));
+                var yaxisGraph = new List<string>();
+                var processMessageCont = 0;
+
+                processResponse.Messages.ForEach(pA => { yaxisGraph.Add(GetLinesProcessData(pA, processMessageCont++)); });
+                multilineChart.Add(CreateMultilineChart(string.Join(",", yaxisGraph),p.Id));
+                processChart.Add(GeneratechartData(processResponse));
 
             });
             reportInformation.Add("%ProcessChart%", string.Join(",", processChart));
-            
+            reportInformation.Add("%LineMessagesCalls%", string.Join(",", multilineChart));
 
             new ReportGenerator("GeneralReport.txt").GenerateReport(reportInformation, diagnosticPath, currentTestId);
+        }
+
+        private static string GetLinesProcessData(ProcessMessage process,int shootNumber)
+        {
+            return "{" + string.Format("x: {0}, y: {1} ",shootNumber.ToString() , Convert.ToInt32(process.ProcessingTime.TotalMilliseconds).ToString()) + "}";
         }
 
         private static string GeneratechartData(ProcessResponse process)
@@ -128,6 +139,24 @@ namespace GGLoader
             row.Append("</tr> ");
 
             return row.ToString();
+        }
+
+        public static string CreateMultilineChart(string data, string processName)
+        {
+            var lineBuilder = new StringBuilder();
+
+            lineBuilder.Append("{");
+            lineBuilder.Append("type: \"line\",");
+            lineBuilder.Append("axisYType: \"secondary\",");
+            lineBuilder.Append(string.Format("name: \"{0}\",", processName));
+            lineBuilder.Append("showInLegend: true,");
+            lineBuilder.Append("markerSize: 0,");
+            lineBuilder.Append("yValueFormatString: \"$#,###k\",");
+            lineBuilder.Append("dataPoints: [");
+            lineBuilder.Append(data);
+            lineBuilder.Append("]}");
+
+            return lineBuilder.ToString();
         }
         
     }
