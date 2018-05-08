@@ -1,0 +1,14 @@
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.Tests.dll
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.Tests.pdb
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\obj\Debug\GGLoader.Tests.dll
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\obj\Debug\GGLoader.Tests.pdb
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\obj\Debug\GGLoader.Tests.csprojResolveAssemblyReference.cache
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.exe
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\nunit.framework.dll
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.pdb
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\nunit.framework.xml
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\Newtonsoft.Json.dll
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.BLL.dll
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.BLL.pdb
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\ReportProcessFormat.txt

@@ -1,0 +1,12 @@
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\GGLoader.exe.config
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\GGLoader.exe
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\GGLoader.pdb
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\obj\Debug\GGLoader.exe
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\obj\Debug\GGLoader.pdb
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\Newtonsoft.Json.dll
+c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\Newtonsoft.Json.xml
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\obj\Debug\GGLoader.csprojResolveAssemblyReference.cache
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\GGLoader.BLL.dll
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\GGLoader.BLL.pdb
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\Layouts\ReportProcessFormat.txt
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader\bin\Debug\Layouts\GeneralReport.txt

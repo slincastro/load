@@ -1,0 +1,7 @@
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\bin\Debug\GGLoader.BLL.dll
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\bin\Debug\GGLoader.BLL.pdb
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\obj\Debug\GGLoader.BLL.csprojResolveAssemblyReference.cache
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\obj\Debug\GGLoader.BLL.dll
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\obj\Debug\GGLoader.BLL.pdb
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\bin\Debug\Layouts\ReportProcessFormat.txt
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.BLL\bin\Debug\Layouts\GeneralReport.txt
