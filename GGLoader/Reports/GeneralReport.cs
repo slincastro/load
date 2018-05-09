@@ -6,24 +6,22 @@ using System.Text;
 
 namespace GGLoader.Reports
 {
-    class GeneralReport : IGenerator
+    class GeneralReport : IReport
     {
-        public Report Report { get; set; }
+ 
         public LoadTest LoadTest { get; set; }
-        public Diagnostic Diagnostic { get; set; }
-        public Log Log { get; set; }
 
         public void Excecute()
         {
-            GenerateGeneralReport();
-            new ReportWriter("GeneralReport.txt").Write(Report);
+            var report = GenerateInformation();
+            new ReportWriter("GeneralReport.txt").Write(report);
         }
 
-        private void GenerateGeneralReport()
+        private ReportInformation GenerateInformation()
         {
             var loadTest = LoadTest;
-            var log = Log;
-            var diagnostic = Diagnostic;
+            var log = loadTest.Log;
+            var diagnostic = loadTest.Diagnostic;
 
             var reportInformation = new Dictionary<string, string>();
             var tableProcessesBuilder = new StringBuilder();
@@ -58,11 +56,11 @@ namespace GGLoader.Reports
             reportInformation.Add("%ProcessChart%", string.Join(",", processChart));
             reportInformation.Add("%LineMessagesCalls%", string.Join(",", multilineChart));
 
-            var report = new Report.Builder(loadTest.Id)
+            var report = new ReportInformation.Builder(loadTest.Id)
                 .WithAttributes(reportInformation)
                 .ByLoadTest(loadTest)
                 .Build();
-            Report = report;
+           return report;
         }
 
         public string GetLinesProcessData(ProcessMessage process, int shootNumber)

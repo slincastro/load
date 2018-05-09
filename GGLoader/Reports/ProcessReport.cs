@@ -5,31 +5,28 @@ using System.Linq;
 
 namespace GGLoader.Reports
 {
-    class ProcessReport : IGenerator
+    class ProcessReport : IReport
     {
-        public Report Report { get; set; }
+        public ReportInformation Report { get; set; }
 
         public LoadTest LoadTest { get; set; }
 
-        public Diagnostic Diagnostic { get; set; }
-
-        public Log Log { get; set; }
 
         public void Excecute()
         {
-            var reports = GenerateReportByProcess();
+            var reports = GenerateInformation();
 
             reports.ForEach(report => { new ReportWriter("ReportProcessFormat.txt").Write(report); });
             
         }
 
-        private List<Report> GenerateReportByProcess()
+        private List<ReportInformation> GenerateInformation()
         {
             var loadTest = LoadTest;
-            var log = Log;
-            var currentDiagnostic = Diagnostic;
+            var log = loadTest.Log;
+            var currentDiagnostic = loadTest.Diagnostic;
 
-            var reports = new List<Report>();
+            var reports = new List<ReportInformation>();
 
             currentDiagnostic.Processes.ForEach(p =>
             {
@@ -45,7 +42,7 @@ namespace GGLoader.Reports
                 reportInformation.Add("%ProcessedMessages%", p.UnprocessedMessages.ToString());
                 reportInformation.Add("%AverageTimeResponse%", processResponse.AverageProcess.ToString() + " ms");
 
-                var report = new Report.Builder(p.Id)
+                var report = new ReportInformation.Builder(p.Id)
                 .WithAttributes(reportInformation)
                 .ByLoadTest(loadTest)
                 .Build();

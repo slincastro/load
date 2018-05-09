@@ -10,6 +10,8 @@ namespace GGLoader
 {
     public class ReportWriter
     {
+        private const string _layoutPathFormat = "{0}\\Layouts\\{1}";
+        private const string _reportFormat = "Report{0}.html";
         private string _formatFileName;
 
         public ReportWriter(string formatFileName)
@@ -17,25 +19,25 @@ namespace GGLoader
             this._formatFileName = formatFileName;
         }
 
-        public void Write(Report report)
+        public void Write(ReportInformation report)
         {
             var formatPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            var logPath = string.Format("{0}\\Layouts\\{1}", formatPath, _formatFileName);
+            var logPath = string.Format(_layoutPathFormat, formatPath, _formatFileName);
 
             var lines = new FileReader().Read(logPath);
             var informationReport = new List<string>();
 
-            foreach (var item in lines)
+            lines.ForEach(l =>
             {
-                var line = item;
+                var line = l;
                 foreach (var remplaceItem in report.Attributes)
                 {
                     line = line.Replace(remplaceItem.Key, remplaceItem.Value);
                 }
                 informationReport.Add(line);
-            }
+            });
 
-            new FileWriter().Write(report.Path + string.Format("Report{0}.html",report.Id), informationReport);
+            new FileWriter().Write(report.Path + string.Format(_reportFormat, report.Id), informationReport);
         }
 
        

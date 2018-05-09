@@ -7,9 +7,9 @@ using GGLoader.BLL.Domain;
 
 namespace GGLoader.Reports
 {
-    public class Report
+    public class ReportInformation
     {
-        private Report(string reportId)
+        private ReportInformation(string reportId)
         {
             Id = reportId;
         }
@@ -26,11 +26,11 @@ namespace GGLoader.Reports
 
         public class Builder
         {
-            private Report instance;
+            private ReportInformation instance;
 
             public Builder(string reportId)
             {
-                instance = new Report(reportId);
+                instance = new ReportInformation(reportId);
             }
 
             public Builder WithAttributes(Dictionary<string, string> attributes)
@@ -49,7 +49,7 @@ namespace GGLoader.Reports
                 return this;
             }
 
-            public Report Build() { return instance; }
+            public ReportInformation Build() { return instance; }
 
         }
 

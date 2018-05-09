@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace GGLoader.Reports
 {
-    public interface IGenerator
+    public interface IReport
     {
-        LoadTest LoadTest { get; set; }
-        Diagnostic Diagnostic { get; set; }
-        Log Log { get; set; }
-
         void Excecute();
     }
 }

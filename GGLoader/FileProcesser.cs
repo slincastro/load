@@ -1,5 +1,6 @@
 ﻿using GGLoader.BLL.Domain;
 using GGLoader.Reports;
+using System.Collections.Generic;
 using System.IO;
 
 namespace GGLoader
@@ -8,19 +9,25 @@ namespace GGLoader
     {
         public static Log ProcessFile(LoadTest loadTest)
         {
-
             var lines = new FileReader().Read(loadTest.AnalyzedLogPath);
-            var log = new Log(lines, loadTest.Id);
-
-            var currentDiagnostic = new Diagnostic(log, loadTest.TotalSendedMessages);
 
             var diagnosticPath = loadTest.GetDiagnosticPath();
             var createFolderDirectory = Directory.CreateDirectory(diagnosticPath);
 
-            new ProcessReport { LoadTest = loadTest, Log = log, Diagnostic = currentDiagnostic }.Excecute();
-            new GeneralReport { LoadTest = loadTest, Log = log, Diagnostic = currentDiagnostic }.Excecute();
+            loadTest.Log = new Log(lines, loadTest.Id);
+            loadTest.Diagnostic = new Diagnostic(loadTest.Log, loadTest.TotalSendedMessages);
 
-            return log;
+            new List<IReportFactory>
+            {
+                new ProcessReportFactory(),
+                new GeneralReportFactory()
+
+            }.ForEach(r => 
+            {
+                r.Create(loadTest).Excecute();
+            });
+
+            return loadTest.Log;
         }
     }
 

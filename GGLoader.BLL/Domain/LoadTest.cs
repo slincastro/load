@@ -19,6 +19,9 @@ namespace GGLoader.BLL.Domain
         public int MessagesByClient { get; set; }
         public int TotalSendedMessages { get; set; }
 
+        public Log Log { get; set; }
+        public Diagnostic Diagnostic { get; set; }
+
         public Builder NewBuilder() { return new Builder(Id); }
 
         public string GetDiagnosticPath() {

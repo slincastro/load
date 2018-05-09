@@ -39,7 +39,7 @@ namespace GGLoader.Tests
             currentReportInformation.Add("%TotalProcesses%", "TotalProcesses");
             currentReportInformation.Add("%RecievedMessages%", "RecievedMessages");
 
-            var report = new Report.Builder(currentReportId)
+            var report = new ReportInformation.Builder(currentReportId)
                 .WithAttributes(currentReportInformation)
                 .ByLoadTest(loadTest)
                 .Build();
