@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GGLoader.Reports
 {
@@ -21,7 +19,7 @@ namespace GGLoader.Reports
         {
             var reports = GenerateReportByProcess();
 
-            reports.ForEach(report => { new ReportGenerator("ReportProcessFormat.txt").GenerateReport(report); });
+            reports.ForEach(report => { new ReportWriter("ReportProcessFormat.txt").Write(report); });
             
         }
 
@@ -32,6 +30,7 @@ namespace GGLoader.Reports
             var currentDiagnostic = Diagnostic;
 
             var reports = new List<Report>();
+
             currentDiagnostic.Processes.ForEach(p =>
             {
                 var logLines = log.Lines.Where(l => l.ProcessId.Equals(p.Id)).ToList();
@@ -71,5 +70,7 @@ namespace GGLoader.Reports
 
             return "{" + string.Format(" y:{0} ", miliseconds + "") + "}";
         }
+
+
     }
 }
