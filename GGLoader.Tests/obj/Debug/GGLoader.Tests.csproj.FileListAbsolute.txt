@@ -11,4 +11,5 @@ c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\
 c:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.BLL.dll
 C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\GGLoader.BLL.pdb
-C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\ReportProcessFormat.txt
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\Layouts\GeneralReport.txt
+C:\Users\SLCastro\Visual Studio 2015\Projects\GGLoader\GGLoader.Tests\bin\Debug\Layouts\ReportProcessFormat.txt

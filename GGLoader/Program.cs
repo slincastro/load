@@ -18,16 +18,28 @@ namespace GGLoader
             {
 
                 var testNumber = Guid.NewGuid().ToString();
-                const string logPath = @"C:\logs\Guggenheim.Sentry.log";
-                var destinationPath = @"C:\LoadLogs\";
-                string fileName = string.Format(@"LogEvidence{0}.txt", testNumber);
-                Console.Write("Thread quantities: ");
-                var processQuantities = short.Parse(Console.ReadLine());
-                Console.Write("Shoot quantities: ");
-                var shootQuantity = int.Parse(Console.ReadLine());
+                
 
-                GenerateCalls(testNumber, processQuantities, shootQuantity);
-                ProcessLog(testNumber, logPath, destinationPath, fileName, processQuantities, shootQuantity);
+                const string analizedLogPath = @"C:\logs\Guggenheim.Sentry.log";
+                var destinationPath = @"C:\LoadLogs\";
+                string evidenceFileName = string.Format(@"LogEvidence{0}.txt", testNumber);
+
+                Console.Write("Thread quantities: ");
+                var clientsNumber = Int32.Parse(Console.ReadLine());
+                Console.Write("Shoot quantities: ");
+                var messagesNumber = int.Parse(Console.ReadLine());
+
+                var currentTest = new LoadTest(testNumber)
+                    .NewBuilder()
+                    .WithClients(clientsNumber)
+                    .WithMessagesByClient(messagesNumber)
+                    .WithDestinationPath(destinationPath)
+                    .WithAnalizedLogPath(analizedLogPath)
+                    .WithGeneratedFileName(evidenceFileName)
+                    .Build();
+
+                GenerateCalls(currentTest);
+                ProcessLog(currentTest);
 
                 Console.WriteLine("FINISH (y)?:");
                 finish = Console.ReadLine();
@@ -35,14 +47,14 @@ namespace GGLoader
             } while (!finish.ToUpper().Equals("Y"));
         }
 
-        private static void Wait(int processQuantities, int shootQuantity)
+        private static void Wait(int totalSendedMessages)
         {
             Console.WriteLine(" waiting for the client !!");
 
             var cursorLeft = Console.CursorLeft;
             var cursorTop = Console.CursorTop;
 
-            var calculatedSleepTime = (4 * processQuantities * shootQuantity) / 10;
+            var calculatedSleepTime = (4 * totalSendedMessages) / 10;
             const int defaultTime = 50000;
             var sleepTime = calculatedSleepTime < 50000 ? defaultTime : calculatedSleepTime;
 
@@ -50,7 +62,7 @@ namespace GGLoader
 
         }
 
-        private static void ProcessLog(string testNumber, string logPath, string destinationPath, string fileName, int processQuantities, int shootQuantity)
+        private static void ProcessLog(LoadTest currentTest)
         {
             Console.WriteLine("Processing Log !");
             var cursorLeft = Console.CursorLeft;
@@ -58,7 +70,7 @@ namespace GGLoader
             var spinner1 = new ConsoleWaiter(cursorLeft, cursorTop, 400);
 
             spinner1.Start();
-            var log = FileProcesser.ProcessFile(testNumber, logPath, destinationPath,fileName, processQuantities, shootQuantity);
+            var log = FileProcesser.ProcessFile(currentTest);
             spinner1.Stop();
 
             Console.WriteLine("CHECKING FILE:");
@@ -67,7 +79,7 @@ namespace GGLoader
             Console.WriteLine("In QUEUE: " + log.TotalReadedLines);
         }
 
-        private static void GenerateCalls(string testNumber, int processQuantities, int shootQuantity)
+        private static void GenerateCalls(LoadTest currentLoadTest)
         {
             var animation = new List<string>
             { "<(O_o )>",
@@ -91,7 +103,7 @@ namespace GGLoader
             var cursorTop = Console.CursorTop;
 
 
-            var factory = new ProcessFactory(processQuantities, shootQuantity);
+            var factory = new ProcessFactory(currentLoadTest.Clients,currentLoadTest.MessagesByClient);
             var processes = factory.Processes;
             cursorLeft = Console.CursorLeft;
             cursorTop = Console.CursorTop;
@@ -99,13 +111,13 @@ namespace GGLoader
 
             waiter.Start();
 
-            factory.Excecute(testNumber);
+            factory.Excecute(currentLoadTest.Id);
 
             waiter.Stop();
 
             Console.WriteLine("All threads are complete !!");
 
-            Wait(processQuantities, shootQuantity);
+            Wait(currentLoadTest.TotalSendedMessages);
         }
 
         public static void Clock(int cursorLeft, int cursorTop, int topTime)

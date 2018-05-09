@@ -49,11 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LineTests.cs" />
+    <Compile Include="LoadTestTests.cs" />
     <Compile Include="LogProcessTest.cs" />
     <Compile Include="LogTest.cs" />
     <Compile Include="ProcessFactoryTests.cs" />
     <Compile Include="ProcessResponseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GGLoader.BLL\GGLoader.BLL.csproj">

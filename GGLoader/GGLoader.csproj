@@ -54,6 +54,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportGenerator.cs" />
+    <Compile Include="Reports\ChartLines.cs" />
+    <Compile Include="Reports\GeneralReport.cs" />
+    <Compile Include="Reports\IGenerator.cs" />
+    <Compile Include="Reports\ProcessReport.cs" />
+    <Compile Include="Reports\Report.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

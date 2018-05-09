@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Domain\Diagnostic.cs" />
     <Compile Include="Domain\Line.cs" />
+    <Compile Include="Domain\LoadTest.cs" />
     <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\Performance.cs" />
     <Compile Include="Domain\Process.cs" />
